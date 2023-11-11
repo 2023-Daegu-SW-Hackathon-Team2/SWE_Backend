@@ -35,25 +35,43 @@ export class HomepagesService {
 
     async update(
         id: number,
-        newItems: string[],
-        bestItems: string[]
+        homepages: Homepages,
     ): Promise<Homepages[] | null> {
         const { data, error } = await supabase
             .from('Homepages')
-            .update({ 
-                new_item: newItems,
-                best_item: bestItems
-            })
+            .update(homepages)
             .eq('id', id)
             .select();
-    
+
         if (error) {
-            console.error('Error updating data:', error);
+            console.error('Error fetching data:', error);
             return null;
         }
-    
+
         return data as Homepages[];
     }
+
+    // async update(
+    //     id: number,
+    //     newItems: string[],
+    //     bestItems: string[]
+    // ): Promise<Homepages[] | null> {
+    //     const { data, error } = await supabase
+    //         .from('Homepages')
+    //         .update({ 
+    //             new_item: newItems,
+    //             best_item: bestItems
+    //         })
+    //         .eq('id', id)
+    //         .select();
+    
+    //     if (error) {
+    //         console.error('Error updating data:', error);
+    //         return null;
+    //     }
+    
+    //     return data as Homepages[];
+    // }
 
     async uploadImage(file: Express.Multer.File): Promise<string> {
         const filePath = `logos/${Date.now()}-${file.originalname}`;
