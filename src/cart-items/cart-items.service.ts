@@ -18,20 +18,18 @@ export class CartItemsService {
         return data as CartItems[];
     }
 
-    async create(cartItem: CartItems[]): Promise<CartItems[]> {
-        for (const item of cartItem) {
-            const { data, error } = await supabase
-                .from('CartItems')
-                .insert([item])
-                .select();
+    async create(cartItem: CartItems): Promise<CartItems> {
+        const { data, error } = await supabase
+            .from('CartItems')
+            .insert([cartItem])
+            .select();
 
-            if (error) {
-                console.error('Error creating cart item:', error);
-                return null;
-            }
+        if (error) {
+            console.error('Error creating cart item:', error);
+            return null;
         }
 
-        return cartItem;
+        return data ? (data[0] as CartItems) : null;
     }
 
     async update(id: number, cartItem: CartItems): Promise<CartItems> {

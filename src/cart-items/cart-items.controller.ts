@@ -20,7 +20,7 @@ export class CartItemsController {
     }
 
     @Post()
-    create(@Body() createCartItemsDto: CreateCartItemsDto[]) {
+    create(@Body() createCartItemsDto: CreateCartItemsDto) {
         return this.cartItemsService.create(createCartItemsDto);
     }
 
