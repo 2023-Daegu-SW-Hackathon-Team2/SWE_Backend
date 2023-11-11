@@ -7,6 +7,7 @@ import { HomepagesModule } from './homepages/homepages.module';
 import { CreatedUsersModule } from './createdUsers/createdUsers.module';
 import { CartItemsModule } from './cart-items/cart-items.module';
 import { BoardsModule } from './boards/boards.module';
+import { CategoriesModule } from './categories/categories.module';
 
 @Module({
     imports: [
@@ -16,6 +17,7 @@ import { BoardsModule } from './boards/boards.module';
         CreatedUsersModule,
         CartItemsModule,
         BoardsModule,
+        CategoriesModule,
     ],
     controllers: [AppController],
     providers: [AppService],

@@ -8,7 +8,7 @@ export class CartItemsService {
         const { data, error } = await supabase
             .from('CartItems')
             .select('*')
-            .eq('cart_id', cart_id);
+            .eq('id', cart_id);
 
         if (error) {
             console.error('Error fetching data:', error);
