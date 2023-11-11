@@ -1,7 +1,7 @@
-import { IsString, IsEmail } from 'class-validator';
+import { IsString, IsEmail, IsNumber } from 'class-validator';
 
 export class CreateHomepagesDto {
-    @IsString()
+    @IsNumber()
     readonly id: number;
 
     @IsString()

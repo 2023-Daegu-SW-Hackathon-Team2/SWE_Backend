@@ -1,7 +1,7 @@
-import { IsString, IsEmail } from 'class-validator';
+import { IsString, IsEmail, IsNumber } from 'class-validator';
 
 export class CreateProductsDto {
-    @IsString()
+    @IsNumber()
     readonly id: number;
 
     @IsString()
@@ -13,7 +13,7 @@ export class CreateProductsDto {
     @IsString()
     readonly img: string;
 
-    @IsString()
+    @IsNumber()
     readonly price: number;
 
     @IsString()
