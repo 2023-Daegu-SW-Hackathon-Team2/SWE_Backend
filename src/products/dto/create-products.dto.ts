@@ -21,4 +21,7 @@ export class CreateProductsDto {
 
     @IsNumber()
     readonly category: number;
+
+    @IsString()
+    readonly choose: string;
 }
