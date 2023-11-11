@@ -10,7 +10,7 @@ export class HomepagesController {
     @Post()
     create(@Body() createHomepagesDto: CreateHomepagesDto) {
         console.log(CreateHomepagesDto);
-        //return this.HomepagesService.create(CreateHomepagesDto);
+        return this.homepagesService.create(createHomepagesDto);
     }
 
     @Get('id/:id')

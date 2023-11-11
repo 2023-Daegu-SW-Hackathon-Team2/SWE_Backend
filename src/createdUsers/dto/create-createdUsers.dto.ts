@@ -8,5 +8,5 @@ export class CreateCreatedUsersDto {
     readonly pw: string;
 
     @IsString()
-    readonly userId: string;
+    readonly user_id: string;
 }
