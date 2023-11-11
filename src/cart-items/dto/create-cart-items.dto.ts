@@ -12,4 +12,7 @@ export class CreateCartItemsDto {
 
     @IsNumber()
     readonly quantity: number;
+
+    @IsString()
+    readonly choose: string;
 }

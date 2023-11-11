@@ -9,28 +9,27 @@ import {
 } from '@nestjs/common';
 import { CartItemsService } from './cart-items.service';
 import { CreateCartItemsDto } from './dto/create-cart-items.dto';
-import { UpdateCartItemsDto } from './dto/update-cart-items.dto';
 
 @Controller('cart-items')
 export class CartItemsController {
     constructor(private readonly cartItemsService: CartItemsService) {}
 
-    @Get('cart_id/:cart_id')
-    findOne(@Param('cart_id') cart_id: number) {
-        return this.cartItemsService.findOne(cart_id);
+    @Get()
+    findAll() {
+        return this.cartItemsService.findAll();
     }
 
     @Post()
-    create(@Body() createCartItemsDto: CreateCartItemsDto) {
+    create(@Body() createCartItemsDto: CreateCartItemsDto[]) {
         return this.cartItemsService.create(createCartItemsDto);
     }
 
     @Put(':id')
     update(
         @Param('id') id: number,
-        @Body() updateCartItemsDto: UpdateCartItemsDto,
+        @Body() CreateCartItemsDto: CreateCartItemsDto,
     ) {
-        return this.cartItemsService.update(id, updateCartItemsDto);
+        return this.cartItemsService.update(id, CreateCartItemsDto);
     }
 
     @Delete(':id')

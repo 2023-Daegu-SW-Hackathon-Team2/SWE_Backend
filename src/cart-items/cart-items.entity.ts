@@ -13,4 +13,7 @@ export class CartItems {
 
     @Column()
     quantity: number;
+
+    @Column()
+    choose: string;
 }
