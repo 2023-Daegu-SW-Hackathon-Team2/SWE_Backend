@@ -35,19 +35,23 @@ export class HomepagesService {
 
     async update(
         id: number,
-        homepages: Homepages,
+        newItems: string[],
+        bestItems: string[]
     ): Promise<Homepages[] | null> {
         const { data, error } = await supabase
             .from('Homepages')
-            .update(homepages)
+            .update({ 
+                new_item: newItems,
+                best_item: bestItems
+            })
             .eq('id', id)
             .select();
-
+    
         if (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error updating data:', error);
             return null;
         }
-
+    
         return data as Homepages[];
     }
 

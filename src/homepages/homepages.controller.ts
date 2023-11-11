@@ -10,7 +10,7 @@ import {
     UploadedFiles,
     UploadedFile,
 } from '@nestjs/common';
-import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
+import { FilesInterceptor, FileInterceptor, AnyFilesInterceptor } from '@nestjs/platform-express';
 import { CreateHomepagesDto } from './dto/create-homepages.dto';
 import { HomepagesService } from './homepages.service';
 import { Homepages } from './homepages.entity';
@@ -42,7 +42,13 @@ export class HomepagesController {
     }
 
     @Put('id/:id')
-    update(@Param('id') id: number, @Body() homepages: Homepages) {
-        return this.homepagesService.update(id, homepages);
+    @UseInterceptors(AnyFilesInterceptor())
+    update(@Param('id') id: number, @UploadedFiles() files, @Body() body) {
+        // 'body'는 FormData에서 'new_item'과 'best_item'을 포함합니다.
+        const newItems = body.new_item;
+        const bestItems = body.best_item;
+
+        // 서비스 메소드 호출
+        return this.homepagesService.update(id, newItems, bestItems);
     }
 }
