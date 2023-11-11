@@ -26,6 +26,11 @@ export class ProductsController {
         return this.productsService.findOne(id);
     }
 
+    @Get('/category/:category')
+    findCategory(@Param('category') category: number) {
+        return this.productsService.findCategory(category);
+    }
+
     @Put('/:id')
     update(@Param('id') id: number, @Body() products: Products) {
         return this.productsService.update(id, products);
