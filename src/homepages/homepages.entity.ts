@@ -24,8 +24,8 @@ export class Homepages {
     logo: string;
 
     @Column('simple-array')
-    new_item: string;
+    new_item: string[];
 
     @Column('simple-array')
-    best_item: string;
+    best_item: string[];
 }
