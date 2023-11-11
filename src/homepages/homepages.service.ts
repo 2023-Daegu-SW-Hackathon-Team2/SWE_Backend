@@ -6,17 +6,6 @@ import supabase from 'src/supabase-config';
 export class HomepagesService {
     private readonly users: Homepages[] = [];
 
-    // async findAll(): Promise<Homepages[] | null> {
-    //     const { data, error } = await supabase.from('Users').select('*');
-
-    //     if (error) {
-    //         console.error('Error fetching data:', error);
-    //         return null;
-    //     }
-
-    //     return data as User[];
-    // }
-
     async create(homepages: Homepages): Promise<Homepages | null> {
         const { data, error } = await supabase
             .from('Homepages')
@@ -30,17 +19,35 @@ export class HomepagesService {
         return data ? (data[0] as Homepages) : null;
     }
 
-    // async findOne(id: string): Promise<User[] | null> {
-    //     const { data, error } = await supabase
-    //         .from('Users')
-    //         .select('*')
-    //         .eq('id', id);
+    async findOne(id: number): Promise<Homepages[] | null> {
+        const { data, error } = await supabase
+            .from('Homepages')
+            .select('*')
+            .eq('id', id);
 
-    //     if (error) {
-    //         console.error('Error fetching data:', error);
-    //         return null;
-    //     }
+        if (error) {
+            console.error('Error fetching data:', error);
+            return null;
+        }
 
-    //     return data as User[];
-    // }
+        return data as Homepages[];
+    }
+
+    async update(
+        id: number,
+        homepages: Homepages,
+    ): Promise<Homepages[] | null> {
+        const { data, error } = await supabase
+            .from('Homepages')
+            .update(homepages)
+            .eq('id', id)
+            .select();
+
+        if (error) {
+            console.error('Error fetching data:', error);
+            return null;
+        }
+
+        return data as Homepages[];
+    }
 }

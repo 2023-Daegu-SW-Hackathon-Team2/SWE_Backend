@@ -31,4 +31,7 @@ export class Products {
 
     @Column()
     category: number;
+
+    @Column()
+    choose: string;
 }

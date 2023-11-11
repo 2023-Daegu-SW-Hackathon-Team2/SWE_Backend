@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+    Controller,
+    Get,
+    Post,
+    Body,
+    Param,
+    Delete,
+    Put,
+} from '@nestjs/common';
 import { CreateHomepagesDto } from './dto/create-homepages.dto';
 import { HomepagesService } from './homepages.service';
 import { Homepages } from './homepages.entity';
@@ -14,14 +22,12 @@ export class HomepagesController {
     }
 
     @Get('id/:id')
-    findOne(@Param('id') id: string) {
-        console.log('heloo');
-        //return this.HomepagesService.findOne(id);
+    findOne(@Param('id') id: number) {
+        return this.homepagesService.findOne(id);
     }
 
-    @Get()
-    findAll() {
-        console.log('fetching data');
-        //return this.HomepagesService.findAll();
+    @Put('id/:id')
+    update(@Param('id') id: number, @Body() homepages: Homepages) {
+        return this.homepagesService.update(id, homepages);
     }
 }
