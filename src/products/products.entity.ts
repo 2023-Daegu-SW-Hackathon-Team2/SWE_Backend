@@ -28,4 +28,7 @@ export class Products {
 
     @Column()
     description: string;
+
+    @Column()
+    category: number;
 }
