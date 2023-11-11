@@ -1,4 +1,4 @@
-import { IsString, IsEmail, IsNumber } from 'class-validator';
+import { IsString, IsNumber, IsArray } from 'class-validator';
 
 export class CreateBannerDto {
     @IsNumber()
@@ -7,6 +7,7 @@ export class CreateBannerDto {
     @IsNumber()
     readonly homepage_id: number;
 
-    @IsString()
-    readonly banner_data: string;
+    @IsArray()
+    @IsString({ each: true })
+    readonly banner_data: Array<string>;
 }

@@ -17,6 +17,6 @@ export class Banner {
     @Column()
     homepage_id: number;
 
-    @Column()
-    banner_data: string;
+    @Column('simple-array')
+    banner_data: string[];
 }
