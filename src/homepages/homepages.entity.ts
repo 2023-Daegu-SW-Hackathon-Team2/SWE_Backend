@@ -22,4 +22,10 @@ export class Homepages {
 
     @Column()
     logo: string;
+
+    @Column('simple-array')
+    new_item: string;
+
+    @Column('simple-array')
+    best_item: string;
 }

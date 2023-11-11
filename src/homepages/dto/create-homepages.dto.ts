@@ -1,4 +1,4 @@
-import { IsString, IsEmail, IsNumber } from 'class-validator';
+import { IsString, IsEmail, IsNumber, IsArray } from 'class-validator';
 
 export class CreateHomepagesDto {
     @IsNumber()
@@ -12,4 +12,12 @@ export class CreateHomepagesDto {
 
     @IsString()
     readonly logo: string;
+
+    @IsArray()
+    @IsString({ each: true })
+    readonly new_item: string[];
+
+    @IsArray()
+    @IsString({ each: true })
+    readonly best_item: string[];
 }
