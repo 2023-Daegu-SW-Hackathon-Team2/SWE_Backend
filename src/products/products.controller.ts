@@ -10,7 +10,7 @@ export class ProductsController {
     @Post()
     create(@Body() createProductsDto: CreateProductsDto) {
         console.log(createProductsDto);
-        //return this.productsService.create(CreateProductsDto);
+        return this.productsService.create(createProductsDto);
     }
 
     @Get('id/:id')

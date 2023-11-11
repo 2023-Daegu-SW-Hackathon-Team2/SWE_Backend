@@ -10,7 +10,7 @@ export class CreatedUsersController {
     @Post()
     create(@Body() createdUsersDto: CreateCreatedUsersDto) {
         console.log(createdUsersDto);
-        //return this.usersService.create(createdUsersDto);
+        return this.createdUsersService.create(createdUsersDto);
     }
 
     @Get('id/:id')

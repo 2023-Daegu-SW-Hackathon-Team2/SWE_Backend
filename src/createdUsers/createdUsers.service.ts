@@ -17,18 +17,18 @@ export class CreatedUsersService {
     //     return data as CreatedUsers[];
     // }
 
-    // async create(user: CreatedUsers): Promise<CreatedUsers | null> {
-    //     const { data, error } = await supabase
-    //         .from('Users')
-    //         .insert([user])
-    //         .select();
-    //     if (error) {
-    //         console.error('Error creating user:', error);
-    //         return null;
-    //     }
-    //     console.log(data);
-    //     return data ? (data[0] as User) : null;
-    // }
+    async create(createdUser: CreatedUsers): Promise<CreatedUsers | null> {
+        const { data, error } = await supabase
+            .from('CreatedUsers')
+            .insert([createdUser])
+            .select();
+        if (error) {
+            console.error('Error creating user:', error);
+            return null;
+        }
+        console.log(data);
+        return data ? (data[0] as CreatedUsers) : null;
+    }
 
     // async findOne(id: string): Promise<User[] | null> {
     //     const { data, error } = await supabase
