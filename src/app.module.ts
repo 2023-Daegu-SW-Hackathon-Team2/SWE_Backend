@@ -6,8 +6,8 @@ import { BannersModule } from './banners/banners.module';
 import { CartItemsModule } from './cart-items/cart-items.module';
 
 @Module({
-  imports: [UsersModule, BannersModule, CartItemsModule],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [UsersModule, BannersModule, CartItemsModule],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}
