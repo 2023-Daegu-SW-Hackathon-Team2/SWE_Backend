@@ -7,9 +7,10 @@ import { HomepagesModule } from './homepages/homepages.module';
 import { CreatedUsersModule } from './createdUsers/createdUsers.module';
 import { BannersModule } from './banners/banners.module';
 import { CartItemsModule } from './cart-items/cart-items.module';
+import { BoardsModule } from './boards/boards.module';
 
 @Module({
-  imports: [UsersModule, ProductsModule, HomepagesModule, CreatedUsersModule, BannersModule, CartItemsModule],
+  imports: [UsersModule, ProductsModule, HomepagesModule, CreatedUsersModule, BannersModule, CartItemsModule, BoardsModule],
   controllers: [AppController],
   providers: [AppService],
 })
