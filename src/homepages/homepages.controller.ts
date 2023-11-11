@@ -17,7 +17,6 @@ export class HomepagesController {
 
     @Post()
     create(@Body() createHomepagesDto: CreateHomepagesDto) {
-        console.log(CreateHomepagesDto);
         return this.homepagesService.create(createHomepagesDto);
     }
 
