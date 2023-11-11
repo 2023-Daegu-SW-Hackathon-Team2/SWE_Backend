@@ -18,4 +18,7 @@ export class CreateProductsDto {
 
     @IsString()
     readonly description: string;
+
+    @IsNumber()
+    readonly category: number;
 }
