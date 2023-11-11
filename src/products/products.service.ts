@@ -30,17 +30,17 @@ export class ProductsService {
         return data ? (data[0] as Products) : null;
     }
 
-    // async findOne(id: string): Promise<User[] | null> {
-    //     const { data, error } = await supabase
-    //         .from('Users')
-    //         .select('*')
-    //         .eq('id', id);
+    async findOne(id: number): Promise<Products[] | null> {
+        const { data, error } = await supabase
+            .from('Products')
+            .select('*')
+            .eq('id', id);
 
-    //     if (error) {
-    //         console.error('Error fetching data:', error);
-    //         return null;
-    //     }
+        if (error) {
+            console.error('Error fetching data:', error);
+            return null;
+        }
 
-    //     return data as User[];
-    // }
+        return data as Products[];
+    }
 }

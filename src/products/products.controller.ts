@@ -14,14 +14,12 @@ export class ProductsController {
     }
 
     @Get('id/:id')
-    findOne(@Param('id') id: string) {
-        console.log('heloo');
-        //return this.productsService.findOne(id);
+    findOne(@Param('id') id: number) {
+        return this.productsService.findOne(id);
     }
 
     @Get()
     findAll() {
-        console.log('fetching data');
         //return this.productsService.findAll();
     }
 }
