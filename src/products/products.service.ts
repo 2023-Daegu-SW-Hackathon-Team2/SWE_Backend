@@ -76,6 +76,7 @@ export class ProductsService {
     }
 
     async uploadImages(files: Express.Multer.File[]): Promise<string[]> {
+        const filepath: string[] = [];
         const uploadPromises = files.map((file) => {
             const filePath = `products/${Date.now()}-${file.originalname}`;
             return supabase.storage
@@ -89,10 +90,11 @@ export class ProductsService {
                             `Failed to upload image: ${file.originalname}`,
                         );
                     }
+                    filepath.push(filePath);
                     return filePath;
                 });
         });
 
-        return Promise.all(uploadPromises);
+        return filepath;
     }
 }
