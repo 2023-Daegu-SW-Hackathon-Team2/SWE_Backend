@@ -1,12 +1,11 @@
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto } from './dto/create-users.dto';
 import { UsersService } from './users.service';
-import { User } from './user.entity';
 
 @Controller('users')
 export class UsersController {
     constructor(private readonly usersService: UsersService) {}
-    
+
     @Post()
     create(@Body() createUserDto: CreateUserDto) {
         console.log(createUserDto);
@@ -15,13 +14,13 @@ export class UsersController {
 
     @Get('id/:id')
     findOne(@Param('id') id: string) {
-        console.log("heloo");
+        console.log('heloo');
         return this.usersService.findOne(id);
     }
 
     @Get()
     findAll() {
-        console.log("fetching data");
+        console.log('fetching data');
         return this.usersService.findAll();
     }
 }
