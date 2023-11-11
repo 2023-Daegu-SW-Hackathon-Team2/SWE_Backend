@@ -28,4 +28,7 @@ export class Homepages {
 
     @Column('simple-array')
     best_item: string[];
+
+    @Column('simple-array')
+    banners: string[];
 }
