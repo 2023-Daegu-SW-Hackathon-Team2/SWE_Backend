@@ -20,4 +20,8 @@ export class CreateHomepagesDto {
     @IsArray()
     @IsString({ each: true })
     readonly best_item: string[];
+
+    @IsArray()
+    @IsString({ each: true })
+    readonly banners: string[];
 }
