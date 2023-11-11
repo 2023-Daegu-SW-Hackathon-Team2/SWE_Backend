@@ -6,7 +6,7 @@ import supabase from 'src/supabase-config';
 @Injectable()
 export class BoardsService {
     async findAll(): Promise<Boards[]> {
-        const { data, error } = await supabase.from('boards').select('*');
+        const { data, error } = await supabase.from('Board').select('*');
 
         if (error) {
             console.error('Error fetching data:', error);
