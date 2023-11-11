@@ -9,8 +9,15 @@ import { CartItemsModule } from './cart-items/cart-items.module';
 import { BoardsModule } from './boards/boards.module';
 
 @Module({
-  imports: [UsersModule, ProductsModule, HomepagesModule, CreatedUsersModule, CartItemsModule, BoardsModule],
-  controllers: [AppController],
-  providers: [AppService],
+    imports: [
+        UsersModule,
+        ProductsModule,
+        HomepagesModule,
+        CreatedUsersModule,
+        CartItemsModule,
+        BoardsModule,
+    ],
+    controllers: [AppController],
+    providers: [AppService],
 })
 export class AppModule {}

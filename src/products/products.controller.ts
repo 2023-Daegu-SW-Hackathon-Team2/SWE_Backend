@@ -6,10 +6,14 @@ import {
     Param,
     Delete,
     Put,
+    UseInterceptors,
+    UploadedFile,
+    UploadedFiles,
 } from '@nestjs/common';
 import { CreateProductsDto } from './dto/create-products.dto';
 import { ProductsService } from './products.service';
 import { Products } from './products.entity';
+import { FilesInterceptor } from '@nestjs/platform-express';
 
 @Controller('products')
 export class ProductsController {
@@ -19,6 +23,12 @@ export class ProductsController {
     create(@Body() createProductsDto: CreateProductsDto) {
         console.log(createProductsDto);
         return this.productsService.create(createProductsDto);
+    }
+
+    @Post('upload')
+    @UseInterceptors(FilesInterceptor('files'))
+    uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+        return this.productsService.uploadImages(files);
     }
 
     @Get('/:id')

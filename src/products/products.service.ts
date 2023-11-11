@@ -74,4 +74,25 @@ export class ProductsService {
             return null;
         }
     }
+
+    async uploadImages(files: Express.Multer.File[]): Promise<string[]> {
+        const uploadPromises = files.map((file) => {
+            const filePath = `products/${Date.now()}-${file.originalname}`;
+            return supabase.storage
+                .from('storage')
+                .upload(filePath, file.buffer, {
+                    contentType: file.mimetype,
+                })
+                .then(({ data, error }) => {
+                    if (error) {
+                        throw new Error(
+                            `Failed to upload image: ${file.originalname}`,
+                        );
+                    }
+                    return filePath;
+                });
+        });
+
+        return Promise.all(uploadPromises);
+    }
 }
