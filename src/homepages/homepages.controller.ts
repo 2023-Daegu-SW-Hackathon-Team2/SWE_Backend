@@ -6,7 +6,11 @@ import {
     Param,
     Delete,
     Put,
+    UseInterceptors,
+    UploadedFiles,
+    UploadedFile,
 } from '@nestjs/common';
+import { FilesInterceptor, FileInterceptor } from '@nestjs/platform-express';
 import { CreateHomepagesDto } from './dto/create-homepages.dto';
 import { HomepagesService } from './homepages.service';
 import { Homepages } from './homepages.entity';
@@ -18,6 +22,18 @@ export class HomepagesController {
     @Post()
     create(@Body() createHomepagesDto: CreateHomepagesDto) {
         return this.homepagesService.create(createHomepagesDto);
+    }
+
+    @Post('upload')
+    @UseInterceptors(FilesInterceptor('files'))
+    uploadFiles(@UploadedFiles() files: Array<Express.Multer.File>) {
+        return this.homepagesService.uploadImages(files);
+    }
+
+    @Post('logoupload')
+    @UseInterceptors(FileInterceptor('files'))
+    uploadFile(@UploadedFile() file: Express.Multer.File) {
+        return this.homepagesService.uploadImage(file);
     }
 
     @Get('id/:id')

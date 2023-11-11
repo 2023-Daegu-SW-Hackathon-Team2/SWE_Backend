@@ -94,7 +94,16 @@ export class ProductsService {
                     return filePath;
                 });
         });
+        await Promise.all(uploadPromises);
+        const { data, error } = await supabase.storage
+            .from('storage')
+            .createSignedUrls(filepath, 60000);
+        // Supabase의 다른 테이블에 경로 저장
+        const result = [];
+        data.map((data) => {
+            result.push(data['signedUrl']);
+        });
 
-        return filepath;
+        return result;
     }
 }
