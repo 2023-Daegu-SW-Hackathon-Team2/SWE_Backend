@@ -6,7 +6,7 @@ export class CartItems {
     id: number;
 
     @Column()
-    cart_id: number;
+    created_user_id: string;
 
     @Column()
     product_id: number;

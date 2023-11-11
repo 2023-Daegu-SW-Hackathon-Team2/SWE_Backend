@@ -12,6 +12,5 @@ import { CartItemsModule } from './cart-items/cart-items.module';
   imports: [UsersModule, ProductsModule, HomepagesModule, CreatedUsersModule, BannersModule, CartItemsModule],
   controllers: [AppController],
   providers: [AppService],
-  
 })
 export class AppModule {}

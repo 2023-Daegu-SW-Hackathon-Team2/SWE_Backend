@@ -1,6 +1,6 @@
 import {} from 'class-validator';
 
 export class DeleteCartItemsDto {
-    readonly cart_id: number;
+    readonly created_user_id: string;
     readonly product_id: number;
 }
