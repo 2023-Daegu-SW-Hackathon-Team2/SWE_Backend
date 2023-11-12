@@ -31,6 +31,11 @@ export class ProductsController {
         return this.productsService.uploadImages(files);
     }
 
+    @Get()
+    findAll() {
+        return this.productsService.findAll();
+    }
+
     @Get('/:id')
     findOne(@Param('id') id: number) {
         return this.productsService.findOne(id);

@@ -19,6 +19,19 @@ export class ProductsService {
         return data ? (data[0] as Products) : null;
     }
 
+    async findAll(): Promise<Products[] | null> {
+        const { data, error } = await supabase
+            .from('Products')
+            .select('*');
+
+        if (error) {
+            console.error('Error fetching data:', error);
+            return null;
+        }
+
+        return data as Products[];
+    }
+
     async findOne(id: number): Promise<Products[] | null> {
         const { data, error } = await supabase
             .from('Products')
